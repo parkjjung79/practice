@@ -143,21 +143,39 @@
                 var isrc;
                 // console.log('메인이미지:',scene);
 
-                // 4. 이미지 src속성값 만들기(if문분기)
-                if(btnTxt=='포스터'){
-                    isrc = './images/poster02.jpg';
-                }
+                // 4. 이미지 src속성값 만들기(switch문분기)
+                switch(btnTxt){
+                    case "포스터" : 
+                        isrc = './images/poster02.jpg';
+                        break;
+                    case "장면1" : 
+                        isrc = './images/poster03.jpg';
+                        break;
+                    case "장면2" : 
+                        isrc = './images/poster04.jpg';
+                        break;
+                    case "장면3" : 
+                        isrc = './images/poster05.jpg';
+                        break;
 
-                else if(btnTxt=='장면1'){
-                    isrc = './images/poster03.jpg';
-                }
-                else if(btnTxt=='장면2'){
-                    isrc = './images/poster04.jpg';
-                }
+                } ///////////////// switch case /////////////////
+
+
+
+                // if(btnTxt=='포스터'){
+                //     isrc = './images/poster02.jpg';
+                // }
+
+                // else if(btnTxt=='장면1'){
+                //     isrc = './images/poster03.jpg';
+                // }
+                // else if(btnTxt=='장면2'){
+                //     isrc = './images/poster04.jpg';
+                // }
                 
-                else if(btnTxt=='장면3'){
-                    isrc = './images/poster05.jpg';
-                }
+                // else if(btnTxt=='장면3'){
+                //     isrc = './images/poster05.jpg';
+                // }
                 
 
                 // 참고 : if문 조건식에서 비교연산자를 할당연산자로 쓰면 무조건 true처리됨!
