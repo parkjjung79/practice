@@ -48,7 +48,7 @@
             // 코드가 분리된다
 
             /************************************************ 
-                 html요소를 선택할 경우 실행순서가 중요함
+                html요소를 선택할 경우 실행순서가 중요함
                 html 본문 요소가 모두 로딩된 후에 수집 선택해야함!
                 로딩후 선택법 :
 
@@ -58,14 +58,15 @@
                  -> 대상 : 전체 브라우저 window객체
                  -> 이벤트 :
                     (1) load : 전체요소가 모두 로딩후 발생
-                    (2) DOMContentLoaded : html요소(DOMContent)만 다그려지면 발생
+                    (2) DOMContentLoaded : html요소(DOMContent)만 다그려지면 발생, 태그만 뿌려지면 바로 실행 -> 액션을 바로 실행 더 빠르다 
+
                     -> 위의 2가지중 실행시점은 2번이 빠르다!
 
                 [ 이벤트 함수연결 내장함수 ]
                     대상요소.addEventListener(이벤트명,함수)
                     -> 이벤트 발생시 함수와 연결하는 기능을 가진 JS내장함수
                 3. 외부JS 호출시 defer 키워드 사용!
-                    <script src = '외부JS경로' defer>
+                    <script src = '외부JS경로' defer> 
                         ->html 요소 로딩 후 외부JS를 실행함!
             
             ************************************************/
@@ -75,8 +76,8 @@
             // window.addEventListener('load',loadFn);
             window.addEventListener('DOMContentLoaded',loadFn);
 
-            function loadFn(){
-
+            function loadFn(){ //로드됐을때 실행되는 함수 loadFn
+ 
                 // 1. 호출확인
                 console.log('로딩완료!');
 
@@ -88,6 +89,7 @@
 
                 // 3.이벤트 설정하기
                 btns[0].onclick = chageImg;
+                //<button class="btns" onclick="changeImg()">
                 btns[1].onclick = chageImg;
                 btns[2].onclick = chageImg;
                 btns[3].onclick = chageImg;
@@ -123,37 +125,40 @@
 
                 // 1. 호출확인
                 console.log('변경!!!',this.innerText);
+                // this.innerText -> 나 자신안에 있는 글씨!
 
                 // 2. 클릭된 버튼 텍스트 읽기!
                 var btnTxt = this.innerText;
                 // this 키워드(예약어)
                 //-> 함수를 호출한 요소 자신
-                // this 키워드를 사용하며 요소내부의 속성, 데이터를 사용할 수 있다!
+                // this 키워드를 사용하며 요소내부의
+                // '속성, 데이터'를 사용할 수 있다!
                 console.log('나는누구?',this);
 
                 // 3. 대상선정 : 변경할 이미지
                 // img#scene -> scene변수
                 var scene = document.querySelector('#scene');
 
+                // 이미지src변수
+                var isrc;
                 // console.log('메인이미지:',scene);
 
                 // 4. 이미지 src속성값 만들기(if문분기)
                 if(btnTxt=='포스터'){
-                    isrc = "./images/ala1.jpg" 
+                    isrc = './images/poster02.jpg';
                 }
 
                 else if(btnTxt=='장면1'){
-                    isrc = "./images/ala2.jpg"
-
+                    isrc = './images/poster03.jpg';
                 }
                 else if(btnTxt=='장면2'){
-                    isrc = "./images/ala3.jpg"
-
+                    isrc = './images/poster04.jpg';
                 }
+                
                 else if(btnTxt=='장면3'){
-                    isrc = "./images/ala4.jpg"
-
+                    isrc = './images/poster05.jpg';
                 }
+                
 
                 // 참고 : if문 조건식에서 비교연산자를 할당연산자로 쓰면 무조건 true처리됨!
 
@@ -182,7 +187,7 @@
 
         <!-- 스틸컷장면박스 -->
         <div class="photo">
-            <img id="scene" src="./images/ala1.jpg" alt="알라딘스틸컷" />
+            <img id="scene" src="./images/poster01.jpg" alt="포스터1" />
         </div>
 
         <!-- 선택버튼박스 -->
